@@ -19,14 +19,17 @@ load_dotenv()
 
 logging.basicConfig(level=logging.INFO)
 
-BOT_TOKEN = os.getenv("BOT_TOKEN", "").strip()
-WEBAPP_URL = os.getenv("WEBAPP_URL", "").strip()
+DEFAULT_BOT_TOKEN = "9137296388:AAFaSR4eJ_yzMFce74EjjmdgA_7bcXQIEyU"
+DEFAULT_WEBAPP_URL = "https://aleksandrsaits.github.io/Pronzaushiy-nebesa/"
+
+BOT_TOKEN = os.getenv("BOT_TOKEN", DEFAULT_BOT_TOKEN).strip()
+WEBAPP_URL = os.getenv("WEBAPP_URL", DEFAULT_WEBAPP_URL).strip()
 
 if not BOT_TOKEN:
-    raise RuntimeError("Не задан BOT_TOKEN в .env или переменных окружения")
+    raise RuntimeError("Не задан BOT_TOKEN")
 
 if not WEBAPP_URL.startswith("https://"):
-    raise RuntimeError("WEBAPP_URL должен начинаться с https:// (например, ссылка GitHub Pages)")
+    raise RuntimeError("WEBAPP_URL должен начинаться с https://")
 
 
 def main_menu_keyboard(webapp_url: str) -> InlineKeyboardMarkup:
